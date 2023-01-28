@@ -7,8 +7,8 @@ export enum Endpoints {
 }
 
 class AppController extends AppLoader {
-    getSources(callback: (data: ArticlesType) => void) {
-        super.getResp<ArticlesType>(
+    getSources(callback: (data: SourcesType) => void) {
+        super.getResp<SourcesType>(
             {
                 endpoint: Endpoints.sources,
             },
@@ -16,7 +16,7 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e: Event, callback: (data: SourcesType) => void) {
+    getNews(e: Event, callback: (data: ArticlesType) => void) {
         let target = e.target as HTMLElement;
         const newsContainer = e.currentTarget as HTMLElement;
 
@@ -25,7 +25,7 @@ class AppController extends AppLoader {
                 const sourceId = target.getAttribute('data-source-id') || '';
                 if (newsContainer.getAttribute('data-source') !== sourceId) {
                     newsContainer.setAttribute('data-source', sourceId);
-                    super.getResp<SourcesType>(
+                    super.getResp<ArticlesType>(
                         {
                             endpoint: Endpoints.content,
                             options: {

@@ -3,8 +3,8 @@ import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
 
 class App {
-    controller: AppController;
-    view: AppView;
+    private controller: AppController;
+    private view: AppView;
     constructor() {
         this.controller = new AppController();
         this.view = new AppView();
@@ -15,9 +15,9 @@ class App {
             // .querySelector('.sources')
             .getElementsByClassName('sources')[0]
             .addEventListener('click', (e) =>
-                this.controller.getNews(e, (data: SourcesType) => this.view.drawNews(data))
+                this.controller.getNews(e, (data: ArticlesType) => this.view.drawNews(data))
             );
-        this.controller.getSources((data: ArticlesType) => this.view.drawSources(data));
+        this.controller.getSources((data: SourcesType) => this.view.drawSources(data));
     }
 }
 

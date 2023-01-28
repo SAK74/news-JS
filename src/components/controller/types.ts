@@ -1,7 +1,7 @@
-type Source = Record<'id' | 'NamedCurve' | 'RTCSessionDescription' | 'url' | 'category' | 'language', string>;
+type Source = Record<'id' | 'name' | 'description' | 'url' | 'category' | 'language' | 'country', string>;
 
 interface Article
-    extends Record<'author' | 'content' | 'description' | 'publishedAt' | 'title' | 'url' | 'urlToImage', 'string'> {
+    extends Record<'author' | 'content' | 'description' | 'publishedAt' | 'title' | 'url' | 'urlToImage', string> {
     source: Record<'id' | 'name', string>;
 }
 
