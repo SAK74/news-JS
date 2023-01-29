@@ -1,6 +1,7 @@
 import { ArticlesType, SourcesType } from 'components/controller/types';
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
+import addFooter from '../view/footer/footer';
 
 class App {
     private controller: AppController;
@@ -18,6 +19,7 @@ class App {
                 this.controller.getNews(e, (data: ArticlesType) => this.view.drawNews(data))
             );
         this.controller.getSources((data: SourcesType) => this.view.drawSources(data));
+        addFooter();
     }
 }
 

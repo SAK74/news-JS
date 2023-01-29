@@ -1,4 +1,4 @@
-import { ArticlesType, SourcesType } from 'components/controller/types';
+import { ArticlesType, SourcesType } from './types';
 import { Endpoints } from './controller';
 
 type CBType<T> = (data: T) => void;
@@ -14,9 +14,9 @@ class Loader {
             options = {},
         }: {
             endpoint: Endpoints;
-            options?: {
-                sources?: string;
-            };
+            options?: Partial<{
+                sources: string;
+            }>;
         },
         callback: CBType<T> = () => {
             console.error('No callback for GET response');
@@ -35,7 +35,7 @@ class Loader {
         return res;
     }
 
-    private makeUrl(options: { [x: string]: string }, endpoint: Endpoints) {
+    private makeUrl(options: Record<string, string>, endpoint: Endpoints) {
         const urlOptions = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 

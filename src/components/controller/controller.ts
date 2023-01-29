@@ -1,4 +1,4 @@
-import { ArticlesType, SourcesType } from 'components/controller/types';
+import { ArticlesType, SourcesType } from './types';
 import AppLoader from './appLoader';
 
 export enum Endpoints {
@@ -37,9 +37,7 @@ class AppController extends AppLoader {
                 }
                 return;
             }
-            if (target.parentElement) {
-                target = target.parentElement;
-            }
+            target = target.parentElement as HTMLElement;
         }
     }
 }
